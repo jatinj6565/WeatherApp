@@ -13,7 +13,7 @@ struct SearchResponse: Codable,Identifiable {
     let lat, lon: Double
     let country, state: String
     let localNames: LocalNames?
-
+    
     enum CodingKeys: String, CodingKey {
         case name, lat, lon, country, state
         case localNames = "local_names"
@@ -23,4 +23,23 @@ struct SearchResponse: Codable,Identifiable {
 struct LocalNames: Codable,Identifiable {
     var id: String? = UUID().uuidString
     let en: String
+}
+
+extension SearchResponse {
+    
+    static func mockSearchResponse() -> SearchResponse {
+        
+        return SearchResponse(
+            id: UUID().uuidString,
+            name: "London",
+            lat: 51.5074,
+            lon: -0.1276,
+            country: "GB",
+            state: "England",
+            localNames: LocalNames(
+                id: UUID().uuidString,
+                en: "London"
+            )
+        )
+    }
 }

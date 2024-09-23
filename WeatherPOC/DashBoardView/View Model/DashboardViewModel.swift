@@ -16,7 +16,12 @@ class DashboardViewModel: ObservableObject {
     @Published var weatherResponse: WeatherData?
     
     private var cancellables = Set<AnyCancellable>()
+    private let networkManager: NetworkManagerProtocol
     
+    // Dependency Injection through the initializer
+    init(networkManager: NetworkManagerProtocol = NetworkManager()) {
+        self.networkManager = networkManager
+    }
     // API Call for get weather
     func getWeather(lat: Double, long: Double) async {
         DispatchQueueMain.async {
@@ -25,7 +30,7 @@ class DashboardViewModel: ObservableObject {
         
         let request = WeatherRequest(lat: lat, long: long)
         
-        await NetworkManager.shared.makeNetworkCall(endpoint: .getWeather, httpMethod: .GET, parameters: request.toJSON,type: WeatherData.self).sink { completion in
+        await networkManager.makeNetworkCall(endpoint: .getWeather, httpMethod: .GET, parameters: request.toJSON,type: WeatherData.self).sink { completion in
             self.isLoading = false
             switch completion {
             case .failure(let err):

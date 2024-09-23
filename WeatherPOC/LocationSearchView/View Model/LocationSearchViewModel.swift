@@ -16,7 +16,12 @@ class LocationSearchViewModel: ObservableObject {
     @Published var selectedSearchData : SearchResponse?
     
     private var cancellables = Set<AnyCancellable>()
+    private let networkManager: NetworkManagerProtocol
     
+    // Dependency Injection through the initializer
+    init(networkManager: NetworkManagerProtocol = NetworkManager()) {
+        self.networkManager = networkManager
+    }
     func setSelectedLocation(selectedSearchData : SearchResponse?){
         self.selectedSearchData = selectedSearchData
     }
@@ -33,7 +38,7 @@ class LocationSearchViewModel: ObservableObject {
     func searchCities(_ text:String?) async{
         
         let request = SearchRequest(keyword: text ?? "")
-       await NetworkManager.shared.makeNetworkCall(endpoint: Endpoint.place, httpMethod: .GET, parameters: request.toJSON,type: [SearchResponse].self).sink { completion in
+       await networkManager.makeNetworkCall(endpoint: Endpoint.place, httpMethod: .GET, parameters: request.toJSON,type: [SearchResponse].self).sink { completion in
             switch completion {
             case .failure(let err):
                 print("Error is \(err.localizedDescription)")

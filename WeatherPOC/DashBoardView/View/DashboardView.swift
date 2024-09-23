@@ -10,8 +10,9 @@ import Kingfisher
 import CoreLocation
 
 struct DashboardView: View {
-    @ObservedObject var dashboardViewModel = DashboardViewModel()
-    @ObservedObject var locationManager = LocationManager()
+    @EnvironmentObject private var coordinator: AppCoordinator
+    @StateObject var dashboardViewModel = DashboardViewModel()
+    @StateObject var locationManager = LocationManager()
     @State private var selectedSearch: SearchResponse?
     
     var body: some View {
@@ -47,10 +48,9 @@ struct DashboardView: View {
     // Extracted search location view to reduce complexity
     var searchLocationView: some View {
         HStack {
-            NavigationLink(destination: LocationSearchView(callBackSearchResponse: { place in
-                self.selectedSearch = place
-                dashboardViewModel.storeSelectedLocation(place)
-            })) {
+            Button(action: {
+                handleLocationCallback()
+            }) {
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .renderingMode(.original)
@@ -83,6 +83,17 @@ struct DashboardView: View {
                 await dashboardViewModel.getSelectedLocation(currentLocation: currentLocation)
             }
             await dashboardViewModel.getSelectedLocation(currentLocation: locationManager.lastLocation)
+        }
+    }
+    
+    private func handleLocationCallback() {
+        coordinator.presentSheet(.locationSearch) { (place: SearchResponse?) in
+            
+            if let place = place {
+                self.selectedSearch = place
+                dashboardViewModel.storeSelectedLocation(place)
+                handleOnAppear()
+            }
         }
     }
 }

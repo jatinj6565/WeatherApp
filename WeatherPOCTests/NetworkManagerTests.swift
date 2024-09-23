@@ -15,7 +15,7 @@ class NetworkManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        networkManager = NetworkManager.shared
+        networkManager = NetworkManager()
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [MockURLProtocol.self]
         let session = URLSession(configuration: config)

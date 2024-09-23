@@ -11,7 +11,8 @@ import SwiftUI
 struct WeatherPOCApp: App {
     var body: some Scene {
         WindowGroup {
-            DashboardView()
+            CoordinatorView()
         }
     }
 }
+

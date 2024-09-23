@@ -12,6 +12,8 @@
 		7227B1EA2C76687900FBD014 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7227B1E92C76687900FBD014 /* MockNetworkManager.swift */; };
 		7227B1EC2C766EBC00FBD014 /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7227B1EB2C766EBC00FBD014 /* MockUserDefaults.swift */; };
 		7227B1EE2C766F5100FBD014 /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7227B1ED2C766F5100FBD014 /* DashboardViewModelTests.swift */; };
+		723135B82CA088D2004B74B7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723135B72CA088D2004B74B7 /* AppCoordinator.swift */; };
+		723135BB2CA0A60D004B74B7 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723135BA2CA0A60D004B74B7 /* CoordinatorView.swift */; };
 		72881C102A30FDD500C669F9 /* WeatherPOCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72881C0F2A30FDD500C669F9 /* WeatherPOCApp.swift */; };
 		72881C122A30FDD500C669F9 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72881C112A30FDD500C669F9 /* DashboardView.swift */; };
 		72881C142A30FDD700C669F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72881C132A30FDD700C669F9 /* Assets.xcassets */; };
@@ -33,6 +35,7 @@
 		72A117852A3B5C1E0025800B /* DashboardWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A117842A3B5C1E0025800B /* DashboardWeatherView.swift */; };
 		72A117872A3B61220025800B /* DashboardWeatherDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A117862A3B61220025800B /* DashboardWeatherDetailView.swift */; };
 		72A1178A2A3B718F0025800B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A117892A3B718F0025800B /* LoadingView.swift */; };
+		72B6D56A2CA12D1700BE8A4B /* LocationSearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6D5692CA12D1700BE8A4B /* LocationSearchViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,8 @@
 		7227B1E92C76687900FBD014 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		7227B1EB2C766EBC00FBD014 /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
 		7227B1ED2C766F5100FBD014 /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
+		723135B72CA088D2004B74B7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		723135BA2CA0A60D004B74B7 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		72881C0C2A30FDD500C669F9 /* WeatherPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72881C0F2A30FDD500C669F9 /* WeatherPOCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPOCApp.swift; sourceTree = "<group>"; };
 		72881C112A30FDD500C669F9 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		72A117842A3B5C1E0025800B /* DashboardWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardWeatherView.swift; sourceTree = "<group>"; };
 		72A117862A3B61220025800B /* DashboardWeatherDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardWeatherDetailView.swift; sourceTree = "<group>"; };
 		72A117892A3B718F0025800B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		72B6D5692CA12D1700BE8A4B /* LocationSearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		723135B92CA0A58D004B74B7 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				723135B72CA088D2004B74B7 /* AppCoordinator.swift */,
+				723135BA2CA0A60D004B74B7 /* CoordinatorView.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		72881C032A30FDD500C669F9 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +147,7 @@
 		72881C0E2A30FDD500C669F9 /* WeatherPOC */ = {
 			isa = PBXGroup;
 			children = (
+				723135B92CA0A58D004B74B7 /* Coordinator */,
 				72A117882A3B717E0025800B /* CommonView */,
 				72881C3E2A31339000C669F9 /* DashBoardView */,
 				72881C3D2A31335D00C669F9 /* LocationSearchView */,
@@ -160,6 +176,7 @@
 				7227B1E92C76687900FBD014 /* MockNetworkManager.swift */,
 				7227B1EB2C766EBC00FBD014 /* MockUserDefaults.swift */,
 				7227B1ED2C766F5100FBD014 /* DashboardViewModelTests.swift */,
+				72B6D5692CA12D1700BE8A4B /* LocationSearchViewModelTests.swift */,
 			);
 			path = WeatherPOCTests;
 			sourceTree = "<group>";
@@ -362,7 +379,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					72881C0B2A30FDD500C669F9 = {
 						CreatedOnToolsVersion = 14.3;
@@ -432,8 +449,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				72881C452A3134E700C669F9 /* WeatherRequest.swift in Sources */,
+				723135B82CA088D2004B74B7 /* AppCoordinator.swift in Sources */,
 				72881C4E2A31353500C669F9 /* AppConstants.swift in Sources */,
 				72881C552A31373600C669F9 /* SearchRequest.swift in Sources */,
+				723135BB2CA0A60D004B74B7 /* CoordinatorView.swift in Sources */,
 				72881C442A3134E700C669F9 /* WeatherResponse.swift in Sources */,
 				72881C4C2A31353500C669F9 /* NetworkManager.swift in Sources */,
 				72881C562A31373600C669F9 /* SearchResponse.swift in Sources */,
@@ -455,6 +474,7 @@
 			files = (
 				7227B1E82C764CC200FBD014 /* NetworkManagerTests.swift in Sources */,
 				7227B1EC2C766EBC00FBD014 /* MockUserDefaults.swift in Sources */,
+				72B6D56A2CA12D1700BE8A4B /* LocationSearchViewModelTests.swift in Sources */,
 				72881C212A30FDD700C669F9 /* WeatherPOCTests.swift in Sources */,
 				7227B1EE2C766F5100FBD014 /* DashboardViewModelTests.swift in Sources */,
 				7227B1EA2C76687900FBD014 /* MockNetworkManager.swift in Sources */,
@@ -523,6 +543,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -583,6 +604,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

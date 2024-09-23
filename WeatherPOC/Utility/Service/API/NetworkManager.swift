@@ -9,6 +9,10 @@ import Foundation
 import Combine
 
 
+protocol NetworkManagerProtocol {
+    func makeNetworkCall<T: Decodable>(endpoint: Endpoint, httpMethod: HttpMethods, parameters: [String: Any], type: T.Type) async -> Future<T, Error>
+}
+
 enum Endpoint: String {
     case getWeather = "data/2.5/weather"
     case place = "geo/1.0/direct"
@@ -19,10 +23,7 @@ enum HttpMethods: String {
     case POST
 }
 
-class NetworkManager {
-    static let shared = NetworkManager()
-    
-    private init() {}
+class NetworkManager: NetworkManagerProtocol {
     
     private var cancellables = Set<AnyCancellable>()
     private let baseURL = "https://api.openweathermap.org/"

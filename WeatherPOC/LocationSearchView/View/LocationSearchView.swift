@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct LocationSearchView: View {
-    
+    @EnvironmentObject private var coordinator: AppCoordinator
     @State private var searchText: String = ""
     @Environment(\.dismiss) var dismiss
     @ObservedObject var locatinoSearchViewModel = LocationSearchViewModel()
-    var callBackSearchResponse : (_ selectedSearchData : SearchResponse) -> ()
+    var callBackSearchResponse : ((_ selectedSearchData : SearchResponse) -> ())?
     
     var body: some View {
         VStack{
@@ -25,7 +25,7 @@ struct LocationSearchView: View {
                     .onSubmit {
                         Task {
                             locatinoSearchViewModel.searchData = []
-                           await locatinoSearchViewModel.searchCities(searchText)
+                            await locatinoSearchViewModel.searchCities(searchText)
                         }
                         
                     }
@@ -56,9 +56,10 @@ struct LocationSearchView: View {
                             
                         }
                         .onTapGesture {
-                            print("Tapped cell: \(place.name)")
-                            callBackSearchResponse(place)
-                            dismiss()
+//                            print("Tapped cell: \(place.name)")
+                            callBackSearchResponse?(place)
+                            coordinator.dismissSheet(place)
+                            
                         }
                     }
                 } else {

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct WeatherData: Codable {
-   
+struct WeatherData: Codable, Equatable {
+    
     let coord: Coord?
     let weather: [Weather]?
     let base: String?
@@ -22,17 +22,34 @@ struct WeatherData: Codable {
     let timezone, id: Int?
     let name: String?
     let cod: Int?
+    
+    static func == (lhs: WeatherData, rhs: WeatherData) -> Bool {
+        return lhs.coord == rhs.coord &&
+                       lhs.weather == rhs.weather &&
+                       lhs.base == rhs.base &&
+                       lhs.main == rhs.main &&
+                       lhs.visibility == rhs.visibility &&
+                       lhs.wind == rhs.wind &&
+                       lhs.snow == rhs.snow &&
+                       lhs.clouds == rhs.clouds &&
+                       lhs.dt == rhs.dt &&
+                       lhs.sys == rhs.sys &&
+                       lhs.timezone == rhs.timezone &&
+                       lhs.id == rhs.id &&
+                       lhs.name == rhs.name &&
+                       lhs.cod == rhs.cod
+    }
 }
 
-struct Clouds: Codable {
+struct Clouds: Codable, Equatable {
     let all: Int?
 }
 
-struct Coord: Codable {
+struct Coord: Codable, Equatable {
     let lon, lat: Double?
 }
 
-struct Main: Codable {
+struct Main: Codable, Equatable {
     let temp, feelsLike, tempMin, tempMax: Double?
     let pressure: Double?
     let humidity: Int?
@@ -46,7 +63,7 @@ struct Main: Codable {
     }
 }
 
-struct Snow: Codable {
+struct Snow: Codable, Equatable {
     let the1H: Double?
 
     enum CodingKeys: String, CodingKey {
@@ -54,19 +71,62 @@ struct Snow: Codable {
     }
 }
 
-struct Sys: Codable {
+struct Sys: Codable, Equatable {
     let type, id: Int?
     let country: String?
     let sunrise, sunset: Int?
 }
 
-struct Weather: Codable {
+struct Weather: Codable, Equatable {
     let id: Int?
     let main, description, icon: String?
 }
 
-struct Wind: Codable {
+struct Wind: Codable, Equatable {
     let speed: Double?
     let deg: Int?
     let gust: Double?
 }
+
+
+extension WeatherData {
+    static func mockWeatherData() -> WeatherData {
+        // Create and return a mock WeatherData object
+        return WeatherData(
+            coord: Coord(lon: -0.1276, lat: 51.5074), // Example coordinates for London
+            weather: [
+                Weather(id: 800, main: "Clear", description: "clear sky", icon: "01d")
+            ],
+            base: "stations",
+            main: Main(
+                temp: 15.0,
+                feelsLike: 14.0,
+                tempMin: 13.0,
+                tempMax: 17.0,
+                pressure: 1013.0,
+                humidity: 72
+            ),
+            visibility: 10000.0, // Visibility in meters
+            wind: Wind(
+                speed: 3.5,
+                deg: 210,
+                gust: 5.0
+            ),
+            snow: Snow(the1H: 0.0), // No snow
+            clouds: Clouds(all: 5), // Few clouds
+            dt: 1692578400, // Example timestamp
+            sys: Sys(
+                type: 1,
+                id: 1414,
+                country: "GB",
+                sunrise: 1692562210,
+                sunset: 1692618090
+            ),
+            timezone: 3600, // GMT+1
+            id: 2643743, // London city ID
+            name: "London",
+            cod: 200 // HTTP status code for OK
+        )
+    }
+}
+
